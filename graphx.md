@@ -27,19 +27,6 @@ mrTriplets，是triplets，map，reduce的组合，
 RDD，resilient distributed dataset 弹性分布式数据集
 
 
-## scala和java容器类转换
-执行asJava时，提示value asjava is not a member of scala.collection.immutable.map，在调用前引用：
-`import collection.JavaConverters._`
-
-Scala和java之间有许多类似的容器类，可以用asJava和asScala进行转换操作
-
-## json数据中出现’$’符号
-spark sql在SELECT语句中出现’$’会报错，因此考虑将文本中的’$’符号删除
-```
-scala > “$$test in time”.replaceAll(“\\$”,””)
-res7:String = test in time
-```
-
 ## 使用saveAsTextfile会生成多个文件
 使用saveAsTextfile函数保存节点和边信息时，在hadoop会出现多个文件
 分布式计算时会把文件保存成个多个partitions

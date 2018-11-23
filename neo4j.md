@@ -86,6 +86,14 @@ dbms.shell.port=1337
 [参考1](https://stackoverflow.com/questions/29628204/trying-to-execute-a-list-of-cypher-statements-in-neo4j-via-the-admin-interface/29628996)
 [参考2](https://stackoverflow.com/questions/35316074/cannot-connect-to-remote-neo4j-server-using-neo4j-shell)
 
+## 访问远程neo4j
+在修改./conf/neo4j.conf文件，找到下面两行，解注释掉：
+```
+dbms.connectors.default_listen_address=0.0.0.0
+dbms.connector.bolt.listen_address=:7687
+```
+保存后重启neo4j
+
 
 ## 清空库
 ```

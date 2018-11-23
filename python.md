@@ -10,6 +10,16 @@ print(tail)
 ```
 [参考](https://stackoverflow.com/questions/8384737/extract-file-name-from-path-no-matter-what-the-os-path-format)
 
+## 添加python path
+Windows下，在terminal下输入
+```
+set PYTHONPATH=E:\PycharmProjects\models
+```
+Linux下，在shell下输入
+```
+export PYTHONPATH=$PYTHONPATH:/path/to/models
+```
+
 ## 通过源码安装python3
 下载python3源码`wget https://www.python.org/ftp/python/3.6.7/Python-3.6.7rc2.tgz`
 创建目标文件夹 `mkdir /usr/local/python3`
