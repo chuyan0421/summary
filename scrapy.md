@@ -21,6 +21,7 @@ $ pip install pypiwin32
 
 ## 访问<a></a>中的所有文字内容
 当<a></a>中没有其他标签时，可以使用xpathData.xpath(‘./text()’).extract()提取
+
 当<a></a>中还有其他标签，使用xpathData.xpath(‘string(.)’).extract()提取
 
 可以考虑使用preceding，[参考](https://stackoverflow.com/questions/35811535/what-xpath-i-need-to-extract-the-text-inside-span-that-is-preceded-by-a-specific)
@@ -37,4 +38,5 @@ print("waiting...")
 time.sleep(60)
 ```
 启动火狐后，进入到登录界面，扫描二维码登录，在输入框中搜索需要检索的数据，再切换到需要的页面吗，爬虫开始工作。爬取完当前的页面，提示（人工）切换到下一个页面。
+
 geckodriver是一个控制浏览器的工具
