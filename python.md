@@ -1,5 +1,45 @@
 # python
 
+## PIL读取图片，更给尺寸
+```
+from PIL import Image
+test = Image.open('4.jpg')
+new_image = test.resize((28,28))
+```
+`resize`是PIL是自带的更改尺寸函数，但会造成图片的变形
+```
+def letterbox_image(image, size):
+    '''resize image with unchanged aspect ratio using padding'''
+    iw, ih = image.size
+    w, h = size
+    scale = min(w/iw, h/ih)
+    nw = int(iw*scale)
+    nh = int(ih*scale)
+
+    image = image.resize((nw,nh), Image.BICUBIC)
+    #Image.new生成新的图片，彩色图片mode='RGB',灰色图片mode='L'
+    new_image = Image.new('L', size, 128)
+    new_image.paste(image, ((w-nw)//2, (h-nh)//2))
+    return new_image
+```
+
+## numpy读取图片，变更shape
+```
+from PIL import Image
+import numpy as np
+test = Image.open('test.jpg')
+atrr = np.array(test)
+#atrr = atrr/255 #归一化
+
+#变更shape有多种方式，如下
+atrr_3d = np.expand_dims(atrr, axis=0)
+#atrr_3d = np.reshape(atrr,(-1,28,28)) #(28,28)为原本图片尺寸
+#atrr_3d = atrr[np.newaxis, ...]
+
+np.save('test.npy',atrr_3d)
+```
+
+
 ## 提取路径中的文件名
 ```
 filepath = ‘a/b/c’
