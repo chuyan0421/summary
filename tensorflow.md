@@ -24,6 +24,11 @@ curl -d '{"instances": [1.0, 2.0, 5.0]}' \
 `invalid argument type=bind for --mount flag invalid field '' must be a key=value pair`
 
 docker运行命令的逗号后面不要加空格
+```
+docker run -p 8500:8500 \
+--mount type=bind,source=/tmp/mnist,target=/models/mnist \
+-e MODEL_NAME=mnist -t tensorflow/serving &
+```
 
 [参考](https://stackoverflow.com/questions/52611080/tensor-flow-serving-docker-invalid-field)
 
