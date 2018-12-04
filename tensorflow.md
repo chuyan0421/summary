@@ -1,3 +1,32 @@
+## tensorflow serve
+[参考](https://tensorflow.google.cn/serving/)
+```
+# Download the TensorFlow Serving Docker image and repo
+docker pull tensorflow/serving
+git clone https://github.com/tensorflow/serving
+# Location of demo models
+TESTDATA="$(pwd)/serving/tensorflow_serving/servables/tensorflow/testdata"
+
+# Start TensorFlow Serving container and open the REST API port
+docker run -t --rm -p 8501:8501 \
+   -v "$TESTDATA/saved_model_half_plus_two_cpu:/models/half_plus_two" \
+   -e MODEL_NAME=half_plus_two \
+   tensorflow/serving &
+
+# Query the model using the predict API
+curl -d '{"instances": [1.0, 2.0, 5.0]}' \
+   -X POST http://localhost:8501/v1/models/half_plus_two:predict
+
+# Returns => { "predictions": [2.5, 3.0, 4.5] }
+```
+
+## tensorflow serve报错
+`invalid argument type=bind for --mount flag invalid field '' must be a key=value pair`
+
+docker运行命令的逗号后面不要加空格
+
+[参考](https://stackoverflow.com/questions/52611080/tensor-flow-serving-docker-invalid-field)
+
 ## tf.image.resize_images报错ValueError: 'images' contains no shape.
 在执行tf.image.resize_images之前tf.image.decode_image的语句替换成
 
