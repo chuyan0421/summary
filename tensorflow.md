@@ -1,3 +1,10 @@
+## AttributeError: 'list' object has no attribute 'dtype' when exporting model for tensorflow serving
+将python的数据格式转换成tf的数据格式
+```
+tf.convert_to_tensor(model.output)
+```
+[参考](https://stackoverflow.com/questions/46862662/getting-error-str-object-has-no-attribute-dtype-when-exporting-textsum-model)
+
 ## tensorflow serve
 [参考](https://tensorflow.google.cn/serving/)
 ```
