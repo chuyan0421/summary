@@ -1,4 +1,6 @@
-# python
+## keras运行在flask上，报错ValueError: Tensor Tensor("fc1000/Softmax:0", shape=(?, 1000), dtype=float32) is not an element of this graph
+
+
 
 ## PIL读取图片，更给尺寸
 ```
