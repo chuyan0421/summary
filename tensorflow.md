@@ -1,3 +1,30 @@
+## ValueError: Tensor Tensor("fc1000/Softmax:0", shape=(?, 1000), dtype=float32) is not an element of this graph.
+在将keras部署在flask时，使用`https://github.com/jrosebr1/simple-keras-rest-api`这个例程时，会遇到这个问题
+
+在初始化模型后，增加`graph = tf.get_default_graph()`
+
+使用模型预测功能时，添加`with graph.as_default():`
+
+[参考](https://github.com/jrosebr1/simple-keras-rest-api/issues/1)
+
+
+## FailedPreconditionError (see above for traceback): Attempting to use uninitialized value
+没有初始化变量，需要在sess内执行
+```
+with graph.as_default():
+  #init_a = tf.initialize_all_variables()
+  init_b = tf.global_variables_initializer()
+  #init_c  = tf.local_variables_initializer()
+  with tf.Session() as sess:
+    #sess.run(init_a)
+    sess.run(init_b)
+    #sess.run(init_c)
+```
+注意graph和sess的位置
+
+[参考](https://stackoverflow.com/questions/44624648/tensorflow-attempting-to-use-uninitialized-value-in-variable-initialization/44630421)[参考](https://stackoverflow.com/questions/34001922/failedpreconditionerror-attempting-to-use-uninitialized-in-tensorflow)[参考](https://stackoverflow.com/questions/50049485/failedpreconditionerror-attempting-to-use-uninitialized-value-conv2d-1-kernel-w)
+
+
 ## AttributeError: 'list' object has no attribute 'dtype' when exporting model for tensorflow serving
 将python的数据格式转换成tf的数据格式
 ```
