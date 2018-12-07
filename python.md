@@ -44,7 +44,7 @@ np.save('test.npy',atrr_3d)
 filepath = ‘a/b/c’
 filename = os.path.basename(filepath)
 print(filename)
-head, tail = os.path.split(filepaht)
+head, tail = os.path.split(filepath)
 print(tail)
 ```
 [参考](https://stackoverflow.com/questions/8384737/extract-file-name-from-path-no-matter-what-the-os-path-format)
