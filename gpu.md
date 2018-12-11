@@ -1,3 +1,6 @@
+## tensorflow CUDA cudnn 版本对应关系
+[参考](https://blog.csdn.net/yuejisuo1948/article/details/81043962)
+
 ## 安装anaconda
 安装完后，启动指令为 `anaconda-navigator`
 
