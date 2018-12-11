@@ -3,8 +3,11 @@
 ```
 from PIL import Image
 test = Image.open('4.jpg')
+gray_image = test.convert('L') # 'L'表示灰度图像，'1'表示二值图像，
 new_image = test.resize((28,28))
 ```
+[图形模式详情](https://blog.csdn.net/icamera0/article/details/50843172)
+
 `resize`是PIL是自带的更改尺寸函数，但会造成图片的变形
 ```
 def letterbox_image(image, size):
@@ -61,15 +64,26 @@ export PYTHONPATH=$PYTHONPATH:/path/to/models
 
 ## 通过源码安装python3
 下载python3源码`wget https://www.python.org/ftp/python/3.6.7/Python-3.6.7rc2.tgz`
+
 创建目标文件夹 `mkdir /usr/local/python3`
+
 将源码解压到目标文件夹 `tar -zxvf Python-3.6.7rc2.tgz -C /usr/local/python3`
+
 进入目标文件夹 `cd Python-3.7.0`
+
 编译
 ```
 ./configure  --prefix=/usr/local/python3
 make
 make install
 ```
+注：若提示缺少zlib，安装zlib包`yum -y install zlib*`
+
+安装zlib可能会发生64位和32位的冲突，根据系统的版本选择对应的版本
+
+`yum -y install zlib* --setopt=protected_multilib=false `
+
+
 [参考](https://www.cnblogs.com/kimyeee/p/7250560.html)
 
 ## virtualenv 安装
