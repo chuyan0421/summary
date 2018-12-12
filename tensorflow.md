@@ -1,3 +1,11 @@
+## docker中绑定tensorflow serving
+```
+docker run -p 8500:8500 \
+  --mount type=bind,source=/root/yanzi/yolo_saved_model,target=/models/yolo \
+  -t --entrypoint=tensorflow_model_server tensorflow/serving --enable_batching \
+  --port=8500 --model_name=yolo --model_base_path=/models/yolo &
+```
+
 ## ValueError: Tensor Tensor("fc1000/Softmax:0", shape=(?, 1000), dtype=float32) is not an element of this graph.
 在将keras部署在flask时，使用`https://github.com/jrosebr1/simple-keras-rest-api`这个例程时，会遇到这个问题
 
