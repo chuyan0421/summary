@@ -89,6 +89,11 @@ chgrp admin -R virtualEnvFolder
 进入虚拟环境`Source virtualEnvFolder/bin/activate`
 退出 `deactivate`
 
+## 不激活virtualenv环境，使用环境下的指令
+```
+/root/yanzi/scrapyENV/bin/python3 -m scrapy crawl maotai
+```
+
 ## pip安装
 ```
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
