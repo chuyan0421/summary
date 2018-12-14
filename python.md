@@ -41,7 +41,6 @@ atrr_3d = np.expand_dims(atrr, axis=0)
 np.save('test.npy',atrr_3d)
 ```
 
-
 ## 提取路径中的文件名
 ```
 filepath = ‘a/b/c’
@@ -77,17 +76,8 @@ export PYTHONPATH=$PYTHONPATH:/path/to/models
 make
 make install
 ```
-注：若提示缺少zlib，安装zlib包`yum -y install zlib*`
-
-安装zlib可能会发生64位和32位的冲突，根据系统的版本选择对应的版本
-
-`yum -y install zlib* --setopt=protected_multilib=false `
-
-
-[参考](https://www.cnblogs.com/kimyeee/p/7250560.html)
-
 ## virtualenv 安装
-安装virtualenv  `Pip install virtualenv`
+安装virtualenv  `pip install virtualenv`
 
 创建解释器为python的虚拟环境 `virtualenv -p /path/to/python3 /path/to/virtualEnvFolder`
 
@@ -106,10 +96,32 @@ python get-pip.py
 ```
 [参考](https://pip.pypa.io/en/stable/installing/)
 
-## 使用pip命令安装程序提示找不到ssl
+## 使用pip命令安装程序提示找不到ssl(pip安装软件前必装)
 openssl只包含了可执行部分，openssl-devel才包含了头文件、头文件参考、某些库文件等跟开发相关的东西。所以只安装openssl是找不到相应的头文件的
 ```
 yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel
 ```
-
 [参考](https://www.cnblogs.com/minglee/p/9232673.html)
+
+通过编译python安装包安装python后，通过pip安装软件，提示缺少ssl时，说明python3在编译时没有添加ssl，重新编译`./configure --with-ssl`
+[参考](https://blog.csdn.net/jeryjeryjery/article/details/77880227)
+
+### 通过pip安装scrapy，提示找不到合适的twisted版本，可通过源码编译安装
+```
+wget https://twistedmatrix.com/Releases/Twisted/17.1/Twisted-17.1.0.tar.bz2
+tar -jxvf Twisted-17.1.0.tar.bz2
+cd Twisted-17.1.0
+python setup.py install
+```
+### 在tar解压缩tar.bz2文件时，提示找不到bz2子命令，安装bzip2和bzip2-libs
+```
+yum install bzip2
+yum install bizp2-libs
+```
+### 若提示缺少zlib，安装zlib包`yum -y install zlib*`
+
+安装zlib可能会发生64位和32位的冲突，根据系统的版本选择对应的版本
+
+`yum -y install zlib* --setopt=protected_multilib=false `
+
+[参考](https://www.cnblogs.com/kimyeee/p/7250560.html)

@@ -1,4 +1,22 @@
 # mysql
+## 登录mysql
+```
+mysql -uwgb -hXXX.XXX.XXX.XXX -p
+```
+-u指定用户名，-h指定ip地址，-p表示需要输入密码
+
+## mysql数据迁移
+```
+mysqldump -uroot -pdbpasswd -d dbname >db.sql; #导出dbname的所有表结构
+mysqldump -uroot -pdbpasswd dbname >db.sql; #导出dbname的所有表结构和表数据，不加-d
+
+mysqldump -uroot -pdbpasswd dbname test>db-test.sql; #导出特定表，在dbname后面添加table名字
+
+create database dbname_new; #在新的位置建库
+mysqldump -uroot -pdbpasswd dbname_new < db.sql;
+```
+
+
 ## 导入csv文件
 当csv文件字段名和表字段名不一致时,导入表格出现乱码
 ```
